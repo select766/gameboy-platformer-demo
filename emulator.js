@@ -20,6 +20,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 var title;
 var rom;
+var gb;
 
 function addROMfromComputer(ev){
    rominput = document.createElement("input");
@@ -49,45 +50,45 @@ function loadROM(arraybuffer){
    
    gb = new GameBoy(arraybuffer, document.getElementById("display"));
       
-   var data = document.getElementById("data");
-   title = "";
-   for(var i = 0; gb.getAddress(308+i) != 0; i++){
-      title += String.fromCharCode(gb.getAddress(308+i));
-   }
-   document.getElementById("title").innerHTML = title;
+   // var data = document.getElementById("data");
+   // title = "";
+   // for(var i = 0; gb.getAddress(308+i) != 0; i++){
+   //    title += String.fromCharCode(gb.getAddress(308+i));
+   // }
+   // document.getElementById("title").innerHTML = title;
    
-   switch(gb.getAddress(0x0147)){
-      case 0: document.getElementById("cartridge").innerHTML = "ROM ONLY"; break;
-      case 1: document.getElementById("cartridge").innerHTML = "MBC1"; break;
-      case 2: document.getElementById("cartridge").innerHTML = "MBC1+RAM"; break;
-      case 3: document.getElementById("cartridge").innerHTML = "MBC1+RAM+BATTERY"; break;
-      case 5: document.getElementById("cartridge").innerHTML = "MBC2"; break;
-      case 6: document.getElementById("cartridge").innerHTML = "MBC2+BATTERY"; break;
-      case 8: document.getElementById("cartridge").innerHTML = "ROM+RAM"; break;
-      case 9: document.getElementById("cartridge").innerHTML = "ROM+RAM+BATTERY"; break;
-      default: document.getElementById("cartridge").innerHTML = "Unknown ("+gb.getAddress(0x0147)+")"; break;
-   }
-   document.getElementById("cartridge").innerHTML += "<br/>"+(2*Math.pow(2,gb.getAddress(0x0148)))*16+"KB ROM";
-   switch(gb.getAddress(0x0149)){
-      case 0: document.getElementById("cartridge").innerHTML += " - No RAM"; break;
-      case 1: document.getElementById("cartridge").innerHTML += " - 2 KB RAM"; break;
-      case 2: document.getElementById("cartridge").innerHTML += " - 8 KB RAM"; break;
-      case 3: document.getElementById("cartridge").innerHTML += " - 32 KB RAM"; break;
-   }
+   // switch(gb.getAddress(0x0147)){
+   //    case 0: document.getElementById("cartridge").innerHTML = "ROM ONLY"; break;
+   //    case 1: document.getElementById("cartridge").innerHTML = "MBC1"; break;
+   //    case 2: document.getElementById("cartridge").innerHTML = "MBC1+RAM"; break;
+   //    case 3: document.getElementById("cartridge").innerHTML = "MBC1+RAM+BATTERY"; break;
+   //    case 5: document.getElementById("cartridge").innerHTML = "MBC2"; break;
+   //    case 6: document.getElementById("cartridge").innerHTML = "MBC2+BATTERY"; break;
+   //    case 8: document.getElementById("cartridge").innerHTML = "ROM+RAM"; break;
+   //    case 9: document.getElementById("cartridge").innerHTML = "ROM+RAM+BATTERY"; break;
+   //    default: document.getElementById("cartridge").innerHTML = "Unknown ("+gb.getAddress(0x0147)+")"; break;
+   // }
+   // document.getElementById("cartridge").innerHTML += "<br/>"+(2*Math.pow(2,gb.getAddress(0x0148)))*16+"KB ROM";
+   // switch(gb.getAddress(0x0149)){
+   //    case 0: document.getElementById("cartridge").innerHTML += " - No RAM"; break;
+   //    case 1: document.getElementById("cartridge").innerHTML += " - 2 KB RAM"; break;
+   //    case 2: document.getElementById("cartridge").innerHTML += " - 8 KB RAM"; break;
+   //    case 3: document.getElementById("cartridge").innerHTML += " - 32 KB RAM"; break;
+   // }
    
-   document.getElementById("cartridge-data").style.display = "";
+   // document.getElementById("cartridge-data").style.display = "";
    
-   if(gb.ramSpace > 0){
-      document.getElementById("delete").style.display = "";
+   // if(gb.ramSpace > 0){
+   //    document.getElementById("delete").style.display = "";
       
-      if(localStorage.getItem(title) != null){
-         var data = window.atob(localStorage.getItem(title));
-         gb.setCartridgeRam(data);
-      }
+   //    if(localStorage.getItem(title) != null){
+   //       var data = window.atob(localStorage.getItem(title));
+   //       gb.setCartridgeRam(data);
+   //    }
       
-   }else{
-      document.getElementById("delete").style.display = "none";
-   }
+   // }else{
+   //    document.getElementById("delete").style.display = "none";
+   // }
 
    gb.onFPS = function(msg){
       document.getElementById("fps").innerHTML = msg;

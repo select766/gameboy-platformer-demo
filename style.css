@@ -34,7 +34,7 @@ h1{
 }
 
 #wrapper{
-	width: 700px;
+	width: 850px;
 	margin: 0 auto;
 }
 
@@ -45,7 +45,7 @@ h1{
 
 .right-column{
 	float:right;
-	width: 250px;
+	width: 400px;
 }
 
 .title{
@@ -73,6 +73,9 @@ h1{
 	border-radius: 10px;
 	text-align: center;
 	padding: 20px;
+	user-select: none; /* prevent text selection */
+	-webkit-user-select: none;
+	touch-action: manipulation; /* prevent double tap zoom */
 }
 .gb .display {
 	padding: 10px;

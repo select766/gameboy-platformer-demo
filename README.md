@@ -1,3 +1,9 @@
+# ゲームボーイ強化学習デモサイト
+
+https://github.com/select766/gameboy-platformer の成果物のROMをWebブラウザ上のゲームボーイエミュレータで動作させるデモサイト。
+
+↓エミュレータのREADME
+
 # JS GameBoy Emulator
 
 GameBoy emulator coded in JavaScript for browsers. You can see it working on http://gb.alexaladren.net

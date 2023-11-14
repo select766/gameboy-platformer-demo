@@ -41,12 +41,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 		<script src="Z80.js"></script>
 		<script src="GameBoy.js"></script>
 		<script src="emulator.js"></script>
+		<script src="my.js"></script>
 	</head>
 
 	<body>
 		<div id="wrapper">
 			<header>
-				<h1>JS GameBoy Emulator</h1>
+				<h1>ゲームボーイ強化学習デモ</h1>
 			</header>
 
 			<div class="left-column">
@@ -67,30 +68,78 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 					</div>
 					<div class="emulator-controls">
 						<div id="pause-button" class="button material-symbols-outlined" onclick="pause()">pause</div>
-						<div>
+						<!-- <div>
 							<span class="material-symbols-outlined">volume_up</span>
 							<input type="range" min="0" max="100" value="20" step="1" oninput="gb.setAudioVolume(this.value / 100)">
-						</div>
+						</div> -->
 					</div>
 				</div>
 				
+				
+			</div>
+			<div class="right-column">
+
+				<p>ゲームボーイ上でアクションゲームのステージを作り、強化学習を行うソフトのデモです。</p>
+
+				<p>単純に学習を行わせたい場合、STARTボタン（Wキー）を2回押してください。</p>
+
+				<p><a href="https://twitter.com/select766/status/1722943574059413889" target="_blank" rel="noopener noreferrer">デモ動画</a></p>
+
+				<p><a href="https://techbookfest.org/product/1QYFFvrVeTDUU3u4HnkE9p" target="_blank" rel="noopener noreferrer">このソフトの作り方の解説書を技術書典で頒布中</a></p>
+
+				<div>
+					画面について
+					<ol>
+						<li>タイトル画面
+							<ul>
+								<li>A (Sキー): ステージを作成する。</li>
+								<li>START (Wキー): サンプルのステージを使う。</li>
+							</ul>
+						</li>
+						<li>
+							ステージ作成画面
+							<ul>
+								<li>矢印キー: カーソルを移動する。</li>
+								<li>A (Sキー): その場所に壁を作る。最下段で2回押すと穴を作る。</li>
+								<li>START (Wキー): ステージプレイ画面に移行する。</li>
+							</ul>
+						</li>
+						<li>
+							ステージプレイ画面
+							<ul>
+								<li>キャラクターをジャンプさせ、右端のゴールを目指します。ゴールには、できるだけ高い位置で触れると高得点です。</li>
+								<li>A (Sキー): ジャンプ</li>
+								<li>START (Wキー): プレイを終了し、強化学習画面に移動する。</li>
+							</ul>
+						</li>
+						<li>
+							強化学習画面
+							<ul>
+								<li>強化学習AIがステージの解き方を学習します。操作はありません。</li>
+								<li>サンプルのステージでは、約16秒の学習でクリアできるようになり、その後は高得点を目指すようになります。</li>
+							</ul>
+						</li>
+					</ol>
+				</div>
+
+				<p>作: <a href="https://twitter.com/select766" target="_blank" rel="noopener noreferrer">@select766</a> <a href="https://github.com/select766/gameboy-platformer-demo" target="_blank" rel="noopener noreferrer">リポジトリ</a></p>
+
+				
 				<div class="copyright">
+					<p>エミュレータの作者について</p>
 					<a href="http://www.alexaladren.net">Alejandro Aladr&eacute;n</a> |
 					<a href="mailto:alex@alexaladren.net">alex@alexaladren.net</a> | 
 					<a href="http://www.gnu.org/licenses/">GPL v.3</a> |
 					<a href="https://github.com/alexaladren/jsgameboy">GitHub</a>
 				</div>
-				
-			</div>
-			<div class="right-column">
 			
-				<div class="button" id="addfrompc" onclick="addROMfromComputer(event)">Add a ROM from your PC</div>
+				<!-- <div class="button" id="addfrompc" onclick="addROMfromComputer(event)">Add a ROM from your PC</div>
 				
 				<div id="cartridge-data" style="display: none;">
 					<div id="title" class="title"></div>
 					<div id="cartridge"></div>
 					<input type="button" id="delete" value="Delete save" onclick="deleteCartridgeRam()" style="display: none;" />
-				</div>
+				</div> -->
 				
 			</div>
 		</div>
